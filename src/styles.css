@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --font-sans: "Outfit", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,29 +60,69 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-lavender: var(--lavender);
+  --color-primary-soft: var(--primary-soft);
+  --color-card-dark: var(--card-dark);
+  --color-card-dark-foreground: var(--card-dark-foreground);
+  --color-card-dark-muted: var(--card-dark-muted);
+  --color-phone: var(--phone);
+  --color-showcase: var(--showcase);
+  --color-showcase-foreground: var(--showcase-foreground);
+  --color-showcase-muted: var(--showcase-muted);
+  --color-showcase-border: var(--showcase-border);
+  --color-showcase-pill: var(--showcase-pill);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-google: var(--google);
+  --color-image-foreground: var(--image-foreground);
+  --shadow-phone: var(--shadow-phone);
+  --shadow-card: var(--shadow-card);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-brand: var(--shadow-brand);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --primary: oklch(0.49 0.23 303.5);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.02 303.5);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.48 0.01 303.5);
+  --accent: oklch(0.9 0.09 311.5);
+  --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.89 0.01 303.5);
+  --input: oklch(0.93 0 0);
+  --ring: oklch(0.49 0.23 303.5);
+  --lavender: oklch(0.82 0.13 311.5);
+  --primary-soft: oklch(0.91 0.09 311.5);
+  --card-dark: oklch(0.14 0.015 303.5);
+  --card-dark-foreground: oklch(1 0 0);
+  --card-dark-muted: oklch(0.75 0.02 303.5);
+  --phone: oklch(0 0 0);
+  --showcase: oklch(0.905 0 0);
+  --showcase-foreground: oklch(0.12 0.01 303.5);
+  --showcase-muted: oklch(0.42 0.01 303.5);
+  --showcase-border: oklch(0.81 0 0);
+  --showcase-pill: oklch(0.86 0 0);
+  --success: oklch(0.55 0.16 154);
+  --danger: oklch(0.58 0.22 27);
+  --danger-soft: oklch(0.94 0.04 27);
+  --google: oklch(0.58 0.2 28);
+  --image-foreground: oklch(1 0 0);
+  --shadow-phone: 0 28px 70px color-mix(in oklab, var(--phone) 22%, transparent), 0 4px 16px color-mix(in oklab, var(--phone) 12%, transparent);
+  --shadow-card: 0 16px 36px color-mix(in oklab, var(--phone) 10%, transparent);
+  --shadow-soft: 0 5px 16px color-mix(in oklab, var(--phone) 7%, transparent);
+  --shadow-brand: 0 10px 24px color-mix(in oklab, var(--primary) 30%, transparent);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +181,20 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+}
+
+@utility bg-image-overlay {
+  background: linear-gradient(to top, color-mix(in oklab, var(--phone) 78%, transparent), transparent 72%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .phone-shell {
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+  .phone-shell:hover {
+    transform: translateY(-5px);
   }
 }

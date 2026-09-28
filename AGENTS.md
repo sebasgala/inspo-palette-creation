@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project architecture
+
+- Keep Bocadoo as a frontend-only static mobile mockup gallery; no persistence or interaction is needed because the approved scope is visual presentation only.
