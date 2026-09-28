@@ -239,8 +239,8 @@ const Marketplace = () => (
 );
 
 const SettingsRow = ({ icon: Icon, label, danger = false }: { icon: IconType; label: string; danger?: boolean }) => (
-  <div className={`grid grid-cols-[36px_minmax(0,1fr)_auto] items-center gap-3 border-b border-border py-3 ${danger ? "text-danger" : "text-foreground"}`}>
-    <div className={`grid h-9 w-9 place-items-center rounded-xl ${danger ? "bg-danger-soft" : "bg-accent text-primary"}`}><Icon size={16} /></div><span className="text-[11px] font-bold">{label}</span>{!danger && <ChevronRight size={15} className="text-muted-foreground" />}
+  <div className={`grid grid-cols-[32px_minmax(0,1fr)_auto] items-center gap-3 border-b border-border py-1.5 ${danger ? "text-danger" : "text-foreground"}`}>
+    <div className={`grid h-8 w-8 place-items-center rounded-[10px] ${danger ? "bg-danger-soft" : "bg-accent text-primary"}`}><Icon size={14} /></div><span className="text-[10px] font-bold">{label}</span>{!danger && <ChevronRight size={14} className="text-muted-foreground" />}
   </div>
 );
 
@@ -249,10 +249,10 @@ const DinerSettings = () => (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="min-h-0 flex-1 overflow-hidden px-5">
         <h2 className="mt-4 text-[23px] font-black">Ajustes</h2>
-        <div className="mt-5 flex flex-col items-center rounded-[24px] bg-accent/70 p-5"><div className="relative"><Avatar initials="CM" large /><div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-2 border-accent bg-primary text-primary-foreground"><Pencil size={12} /></div></div><h3 className="mt-3 text-base font-black">Carlos Mejía</h3><p className="mt-1 text-[10px] text-muted-foreground">carlos.mejia@email.com</p></div>
-        <p className="mb-1 mt-6 text-[9px] font-black text-muted-foreground">MI CUENTA</p>
+        <div className="mt-4 flex flex-col items-center rounded-[24px] bg-accent/70 p-3"><div className="relative"><Avatar initials="CM" large /><div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-2 border-accent bg-primary text-primary-foreground"><Pencil size={12} /></div></div><h3 className="mt-2 text-sm font-black">Carlos Mejía</h3><p className="mt-1 text-[9px] text-muted-foreground">carlos.mejia@email.com</p></div>
+        <p className="mb-1 mt-4 text-[9px] font-black text-muted-foreground">MI CUENTA</p>
         <SettingsRow icon={UserRound} label="Editar nombre" /><SettingsRow icon={Mail} label="Cambiar correo" /><SettingsRow icon={LockKeyhole} label="Cambiar contraseña" /><SettingsRow icon={CreditCard} label="Métodos de pago" />
-        <p className="mb-1 mt-5 text-[9px] font-black text-muted-foreground">PREFERENCIAS Y SOPORTE</p>
+        <p className="mb-1 mt-3 text-[9px] font-black text-muted-foreground">PREFERENCIAS Y SOPORTE</p>
         <SettingsRow icon={Bell} label="Notificaciones" /><SettingsRow icon={CircleHelp} label="Ayuda y soporte" /><SettingsRow icon={LockKeyhole} label="Términos y privacidad" /><SettingsRow icon={LogOut} label="Cerrar sesión" danger />
       </div>
       <NavBar active="Ajustes" />
@@ -330,10 +330,10 @@ const OwnerSettings = () => (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="min-h-0 flex-1 overflow-hidden px-5">
         <h2 className="mt-4 text-[23px] font-black">Ajustes</h2>
-        <div className="mt-5 flex items-center gap-4 rounded-[24px] bg-foreground p-5 text-background"><div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground"><Utensils size={27} /></div><div className="min-w-0"><p className="text-[9px] font-bold text-lavender">MI RESTAURANTE</p><h3 className="mt-1 text-base font-black leading-tight">La Cuchara<br />de San Blas</h3><p className="mt-1 text-[9px] text-card-dark-muted">Editar perfil <Pencil size={9} className="inline" /></p></div></div>
-        <p className="mb-1 mt-6 text-[9px] font-black text-muted-foreground">NEGOCIO</p>
+        <div className="mt-4 flex items-center gap-4 rounded-[24px] bg-foreground p-4 text-background"><div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground"><Utensils size={24} /></div><div className="min-w-0"><p className="text-[8px] font-bold text-lavender">MI RESTAURANTE</p><h3 className="mt-1 text-sm font-black leading-tight">La Cuchara de San Blas</h3><p className="mt-1 text-[8px] text-card-dark-muted">Editar perfil <Pencil size={8} className="inline" /></p></div></div>
+        <p className="mb-1 mt-4 text-[9px] font-black text-muted-foreground">NEGOCIO</p>
         <SettingsRow icon={Store} label="Datos del restaurante" /><SettingsRow icon={Clock3} label="Dirección y horarios" /><SettingsRow icon={Pencil} label="Editar nombre" /><SettingsRow icon={CreditCard} label="Métodos de cobro" />
-        <p className="mb-1 mt-5 text-[9px] font-black text-muted-foreground">CUENTA Y SOPORTE</p>
+        <p className="mb-1 mt-3 text-[9px] font-black text-muted-foreground">CUENTA Y SOPORTE</p>
         <SettingsRow icon={Mail} label="Cambiar correo" /><SettingsRow icon={LockKeyhole} label="Cambiar contraseña" /><SettingsRow icon={Bell} label="Notificaciones" /><SettingsRow icon={CircleHelp} label="Ayuda y soporte" /><SettingsRow icon={LogOut} label="Cerrar sesión" danger />
       </div>
       <NavBar active="Ajustes" owner />
