@@ -1,22 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
+  ArrowLeft,
+  AtSign,
+  Banknote,
   Bell,
   CalendarDays,
   Check,
   ChevronRight,
+  CircleCheck,
   CircleHelp,
   Clock3,
   CreditCard,
   Eye,
+  Flashlight,
   Home,
+  Landmark,
   LockKeyhole,
   LogOut,
   Mail,
   MapPin,
   Menu as MenuIcon,
+  Minus,
   Pencil,
   Plus,
   QrCode,
+  Receipt,
   ScanLine,
   Search,
   Settings,
@@ -25,10 +33,12 @@ import {
   Sparkles,
   Star,
   Store,
+  UserPlus,
   UserRound,
   UsersRound,
   Utensils,
   WalletCards,
+  X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -43,7 +53,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Ocho pantallas móviles de Bocadoo para comensales y restaurantes de Quito.",
+          "Trece pantallas móviles de Bocadoo para comensales y restaurantes de Quito.",
       },
       { property: "og:title", content: "Bocadoo — Maquetas de la app móvil" },
       {
@@ -88,7 +98,7 @@ const StatusBar = () => (
   </div>
 );
 
-const Phone = ({ title, children }: { title: string; children: React.ReactNode }) => (
+const Phone = ({ title, children, overlay }: { title: string; children: React.ReactNode; overlay?: React.ReactNode }) => (
   <figure className="w-[390px] shrink-0">
     <div className="phone-shell relative h-[844px] overflow-hidden rounded-[47px] border-[7px] border-phone bg-background shadow-phone">
       <div className="absolute left-1/2 top-2 z-30 h-[25px] w-[92px] -translate-x-1/2 rounded-full bg-phone" />
@@ -96,6 +106,7 @@ const Phone = ({ title, children }: { title: string; children: React.ReactNode }
         <StatusBar />
         {children}
       </div>
+      {overlay && <div className="absolute inset-0 z-20 flex flex-col overflow-hidden rounded-[39px] bg-foreground/35 backdrop-blur-[6px]">{overlay}</div>}
       <div className="absolute bottom-2 left-1/2 z-30 h-1 w-28 -translate-x-1/2 rounded-full bg-foreground/80" />
     </div>
     <figcaption className="mt-5 text-center text-sm font-bold text-showcase-muted">{title}</figcaption>
@@ -184,7 +195,7 @@ const DinerHome = () => (
         <header className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
           <div className="min-w-0"><p className="text-[10px] font-semibold text-muted-foreground">MIÉRCOLES, 30 DE SEPTIEMBRE</p><h2 className="mt-1 truncate text-[23px] font-black">¡Hola, Carlos!</h2></div><Avatar initials="CM" />
         </header>
-        <div className="mt-6"><SectionTitle action={<div className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground"><Plus size={17} /></div>}>Mis planes</SectionTitle></div>
+        <div className="mt-6"><SectionTitle>Mis planes</SectionTitle></div>
         <div className="relative mt-3 pb-5">
           <div className="absolute inset-x-3 bottom-0 top-7 rounded-[23px] bg-lavender opacity-70" />
           <div className="relative overflow-hidden rounded-[23px] bg-card-dark p-5 text-card-dark-foreground shadow-card">
@@ -264,14 +275,13 @@ const QuickAction = ({ icon: Icon, label }: { icon: IconType; label: string }) =
   <div className="flex min-w-0 flex-col items-center gap-2 rounded-2xl bg-card px-2 py-3 shadow-soft"><div className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-primary"><Icon size={18} /></div><span className="text-center text-[9px] font-extrabold leading-tight">{label}</span></div>
 );
 
-const OwnerHome = () => (
-  <Phone title="Dueño · Home">
+const OwnerHomeBody = () => (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="min-h-0 flex-1 overflow-hidden px-5">
         <header className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3"><div className="flex min-w-0 items-center gap-3"><div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-foreground text-background"><Utensils size={20} /></div><div className="min-w-0"><p className="truncate text-[9px] font-bold text-muted-foreground">LA CUCHARA DE SAN BLAS</p><h2 className="truncate text-xl font-black">¡Hola, María!</h2></div></div><Bell size={19} /></header>
         <div className="relative mt-6 overflow-hidden rounded-[24px] bg-primary p-5 text-primary-foreground shadow-brand"><div className="absolute -right-7 -top-8 h-28 w-28 rounded-full bg-lavender/30" /><p className="relative text-[9px] font-bold text-primary-soft">RESUMEN DE SEPTIEMBRE</p><p className="relative mt-3 text-[32px] font-black leading-none">48 <span className="text-[17px]">clientes activos</span></p><div className="relative mt-3 flex items-center justify-between"><div><p className="text-xl font-black">$1.320</p><p className="text-[9px] text-primary-soft">vendidos este mes</p></div><div className="flex items-center gap-1 rounded-xl bg-background px-3 py-2.5 text-[9px] font-extrabold text-foreground"><Plus size={14} /> Agregar cliente</div></div></div>
         <div className="mt-5"><SectionTitle>Accesos rápidos</SectionTitle></div>
-        <div className="mt-3 grid grid-cols-3 gap-3"><QuickAction icon={CreditCard} label="Cobrar" /><QuickAction icon={ScanLine} label="Escanear QR" /><QuickAction icon={Utensils} label="Registrar consumo" /></div>
+        <div className="mt-3 grid grid-cols-3 gap-3"><QuickAction icon={CreditCard} label="Cobrar" /><QuickAction icon={ScanLine} label="Escanear QR / Descontar" /><QuickAction icon={Utensils} label="Registrar consumo" /></div>
         <div className="mt-6"><SectionTitle action={<span className="text-[9px] font-bold text-primary">Ver todo</span>}>Historial de transacciones</SectionTitle></div>
         <div className="mt-2 divide-y divide-border">
           <Transaction icon={UserRound} name="Carlos Mejía" detail="Almuerzo consumido · 13:12" value="Validado" positive />
@@ -283,6 +293,11 @@ const OwnerHome = () => (
       </div>
       <NavBar active="Home" owner />
     </div>
+);
+
+const OwnerHome = () => (
+  <Phone title="Dueño · Home">
+    <OwnerHomeBody />
   </Phone>
 );
 
@@ -341,6 +356,230 @@ const OwnerSettings = () => (
   </Phone>
 );
 
+const FieldLabel = ({ children }: { children: React.ReactNode }) => <p className="mb-2 mt-4 text-[9px] font-black text-muted-foreground">{children}</p>;
+
+const ModalHeader = ({ icon: Icon, eyebrow, title, dark = false }: { icon: IconType; eyebrow: string; title: string; dark?: boolean }) => (
+  <div className="grid grid-cols-[40px_minmax(0,1fr)_auto] items-center gap-3">
+    <div className={`grid h-10 w-10 place-items-center rounded-xl ${dark ? "bg-primary text-primary-foreground" : "bg-accent text-primary"}`}><Icon size={19} /></div>
+    <div className="min-w-0"><p className={`text-[9px] font-black ${dark ? "text-lavender" : "text-primary"}`}>{eyebrow}</p><h3 className="mt-0.5 truncate text-lg font-black leading-tight">{title}</h3></div>
+    <div className={`grid h-8 w-8 place-items-center rounded-full ${dark ? "bg-background/15" : "bg-muted"}`}><X size={15} /></div>
+  </div>
+);
+
+const BottomSheet = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-auto rounded-t-[30px] bg-background px-5 pb-8 pt-3 shadow-card">
+    <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-border" />
+    {children}
+  </div>
+);
+
+const PrimaryButton = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-5 flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-xs font-extrabold text-primary-foreground shadow-brand">{children}</div>
+);
+
+const PaymentMethods = ({ selected, dark = false }: { selected: string; dark?: boolean }) => (
+  <div className="grid grid-cols-3 gap-2">
+    {([["Efectivo", Banknote], ["Transferencia", Landmark], ["Tarjeta", CreditCard]] as Array<[string, IconType]>).map(([label, Icon]) => {
+      const on = label === selected;
+      const idle = dark ? "border-background/15 text-card-dark-muted" : "border-border text-muted-foreground";
+      return (
+        <div key={label} className={`flex flex-col items-center gap-1.5 rounded-xl border py-2.5 ${on ? "border-primary bg-primary text-primary-foreground" : idle}`}>
+          <Icon size={16} /><span className="text-[9px] font-bold">{label}</span>
+        </div>
+      );
+    })}
+  </div>
+);
+
+const ChargeModal = () => (
+  <Phone title="Dueño · Cobrar" overlay={
+    <BottomSheet>
+      <ModalHeader icon={CreditCard} eyebrow="COBRAR PLAN" title="Nuevo cobro" />
+      <FieldLabel>CLIENTE</FieldLabel>
+      <div className="grid grid-cols-[44px_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl bg-muted p-2.5"><Avatar initials="VO" /><div className="min-w-0"><p className="truncate text-xs font-extrabold">Valentina Ortiz</p><p className="truncate text-[9px] text-muted-foreground">valentina.ortiz@email.com</p></div><ChevronRight size={15} className="text-muted-foreground" /></div>
+      <FieldLabel>PLAN A COBRAR</FieldLabel>
+      <div className="grid grid-cols-3 gap-2">
+        {([["Semanal", "5", "$15"], ["Quincenal", "10", "$28"], ["Mensual", "20", "$52"]] as const).map(([type, lunches, price]) => {
+          const on = type === "Mensual";
+          return (
+            <div key={type} className={`relative rounded-xl border p-2.5 ${on ? "border-primary bg-accent" : "border-border"}`}>
+              {on && <div className="absolute right-1.5 top-1.5 grid h-4 w-4 place-items-center rounded-full bg-primary text-primary-foreground"><Check size={10} strokeWidth={3} /></div>}
+              <p className="text-[8px] font-black text-primary">{type.toUpperCase()}</p><p className="mt-1.5 text-[11px] font-extrabold">{lunches} almuerzos</p><p className="mt-0.5 text-sm font-black">{price}</p>
+            </div>
+          );
+        })}
+      </div>
+      <FieldLabel>MÉTODO DE PAGO</FieldLabel>
+      <PaymentMethods selected="Efectivo" />
+      <div className="mt-4 space-y-1.5 rounded-2xl bg-muted p-3.5 text-[10px]">
+        <div className="flex justify-between text-muted-foreground"><span>Plan mensual · 20 almuerzos</span><span>$52,00</span></div>
+        <div className="flex justify-between text-muted-foreground"><span>Precio por almuerzo</span><span>$2,60</span></div>
+        <div className="flex justify-between border-t border-border pt-2 text-sm font-black"><span>Total</span><span>$52,00</span></div>
+      </div>
+      <PrimaryButton><Check size={16} /> Confirmar cobro · $52,00</PrimaryButton>
+    </BottomSheet>
+  }>
+    <OwnerHomeBody />
+  </Phone>
+);
+
+const ScanCorner = ({ className }: { className: string }) => <span className={`absolute h-9 w-9 border-primary ${className}`} />;
+
+const ScanModal = () => (
+  <Phone title="Dueño · Escanear QR / Descontar" overlay={
+    <div className="m-auto w-[336px] rounded-[28px] bg-card-dark p-5 text-card-dark-foreground shadow-card">
+      <ModalHeader icon={ScanLine} eyebrow="ESCANEAR QR / DESCONTAR" title="Descontar almuerzo" dark />
+      <div className="relative mt-5 grid h-[190px] place-items-center overflow-hidden rounded-2xl bg-phone">
+        <QrCode size={100} strokeWidth={1.2} className="text-card-dark-muted/40" />
+        <ScanCorner className="left-5 top-5 rounded-tl-xl border-l-4 border-t-4" />
+        <ScanCorner className="right-5 top-5 rounded-tr-xl border-r-4 border-t-4" />
+        <ScanCorner className="bottom-5 left-5 rounded-bl-xl border-b-4 border-l-4" />
+        <ScanCorner className="bottom-5 right-5 rounded-br-xl border-b-4 border-r-4" />
+        <div className="absolute inset-x-8 top-[48%] h-0.5 rounded-full bg-primary shadow-brand" />
+        <div className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-background/15"><Flashlight size={14} /></div>
+      </div>
+      <p className="mt-3 text-center text-[10px] text-card-dark-muted">Apunta la cámara al código QR del comensal</p>
+      <div className="my-3 flex items-center gap-3 text-[9px] font-bold text-card-dark-muted"><i className="h-px flex-1 bg-background/15" />o busca por nombre de usuario<i className="h-px flex-1 bg-background/15" /></div>
+      <div className="flex h-11 items-center gap-3 rounded-xl border border-primary bg-background/10 px-4 text-xs"><AtSign size={15} className="text-lavender" /><span className="font-semibold">carlos.mejia</span><Search size={15} className="ml-auto text-card-dark-muted" /></div>
+      <div className="mt-3 rounded-2xl bg-background p-3 text-foreground">
+        <div className="grid grid-cols-[44px_minmax(0,1fr)_auto] items-center gap-3"><Avatar initials="CM" /><div className="min-w-0"><p className="truncate text-xs font-extrabold">Carlos Mejía</p><p className="truncate text-[9px] text-muted-foreground">@carlos.mejia</p><p className="truncate text-[9px] font-bold text-primary">Plan mensual · 14 almuerzos</p></div><span className="flex items-center gap-1 text-[9px] font-black text-success"><CircleCheck size={13} /> Válido</span></div>
+      </div>
+      <PrimaryButton><Utensils size={15} /> Descontar 1 almuerzo</PrimaryButton>
+    </div>
+  }>
+    <OwnerHomeBody />
+  </Phone>
+);
+
+const AddClientModal = () => (
+  <Phone title="Dueño · Agregar cliente" overlay={
+    <BottomSheet>
+      <ModalHeader icon={UserPlus} eyebrow="AGREGAR CLIENTE" title="Registrar en un plan" />
+      <FieldLabel>CORREO O NOMBRE DE USUARIO</FieldLabel>
+      <div className="flex h-12 items-center gap-3 rounded-xl border-2 border-primary bg-background px-4 text-xs"><AtSign size={16} className="text-primary" /><span className="font-semibold">valentina.ortiz</span><Search size={15} className="ml-auto text-muted-foreground" /></div>
+      <div className="mt-3 grid grid-cols-[44px_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl bg-accent/60 p-2.5"><Avatar initials="VO" /><div className="min-w-0"><p className="truncate text-xs font-extrabold">Valentina Ortiz</p><p className="truncate text-[9px] text-muted-foreground">valentina.ortiz@email.com</p></div><span className="flex items-center gap-1 rounded-lg bg-background px-2 py-1 text-[8px] font-black text-success"><CircleCheck size={11} /> Encontrado</span></div>
+      <FieldLabel>ASIGNAR A UN PLAN</FieldLabel>
+      <div className="space-y-2">
+        {([["Semanal", "5 almuerzos · 7 días", "$15,00"], ["Quincenal", "10 almuerzos · 18 días", "$28,00"], ["Mensual", "20 almuerzos · 35 días", "$52,00"]] as const).map(([type, detail, price]) => {
+          const on = type === "Mensual";
+          return (
+            <div key={type} className={`grid grid-cols-[20px_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border px-3 py-2.5 ${on ? "border-primary bg-accent/50" : "border-border"}`}>
+              <span className={`grid h-5 w-5 place-items-center rounded-full border-2 ${on ? "border-primary" : "border-muted-foreground/40"}`}>{on && <i className="h-2.5 w-2.5 rounded-full bg-primary" />}</span>
+              <div className="min-w-0"><p className="text-[11px] font-extrabold">Plan {type.toLowerCase()}</p><p className="text-[9px] text-muted-foreground">{detail}</p></div>
+              <span className="text-xs font-black">{price}</span>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        <div className="rounded-xl bg-muted p-2.5"><p className="text-[8px] text-muted-foreground">Inicio</p><p className="mt-1 text-[11px] font-extrabold">Hoy, 30/09</p></div>
+        <div className="rounded-xl bg-muted p-2.5"><p className="text-[8px] text-muted-foreground">Vence</p><p className="mt-1 text-[11px] font-extrabold">04/11/2026</p></div>
+      </div>
+      <div className="mt-3 flex items-center justify-between rounded-xl bg-muted px-3 py-2.5"><div><p className="text-[10px] font-extrabold">Cobrar ahora</p><p className="text-[8px] text-muted-foreground">Registra el pago de $52,00 en efectivo</p></div><Toggle /></div>
+      <PrimaryButton><UserPlus size={15} /> Registrar cliente</PrimaryButton>
+    </BottomSheet>
+  }>
+    <OwnerHomeBody />
+  </Phone>
+);
+
+const ScreenHeader = ({ eyebrow, title, action }: { eyebrow: string; title: string; action?: React.ReactNode }) => (
+  <div className="mt-3 grid grid-cols-[40px_minmax(0,1fr)_auto] items-center gap-3">
+    <div className="grid h-10 w-10 place-items-center rounded-full bg-muted"><ArrowLeft size={18} /></div>
+    <div className="min-w-0"><p className="truncate text-[9px] font-bold text-muted-foreground">{eyebrow}</p><h2 className="truncate text-xl font-black leading-tight">{title}</h2></div>
+    {action}
+  </div>
+);
+
+const PosItem = ({ image, name, price, qty = 0 }: { image: string; name: string; price: string; qty?: number }) => (
+  <div className={`relative overflow-hidden rounded-2xl bg-card shadow-soft ${qty ? "ring-2 ring-primary" : ""}`}>
+    <img src={image} alt={name} loading="lazy" width={896} height={752} className="h-[62px] w-full object-cover" />
+    {qty > 0 && <span className="absolute right-2 top-2 grid h-6 w-6 place-items-center rounded-full bg-primary text-[10px] font-black text-primary-foreground">{qty}</span>}
+    <div className="flex items-center justify-between gap-2 p-2.5">
+      <div className="min-w-0"><p className="truncate text-[10px] font-extrabold">{name}</p><p className="mt-0.5 text-[10px] font-black text-primary">{price}</p></div>
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-accent text-primary"><Plus size={14} /></div>
+    </div>
+  </div>
+);
+
+const PosScreen = () => (
+  <Phone title="Dueño · Registrar consumo (POS)">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="px-5">
+        <ScreenHeader eyebrow="CAJA ABIERTA · 13:20" title="Registrar consumo" action={<div className="grid h-10 w-10 place-items-center rounded-full bg-accent text-primary"><Receipt size={18} /></div>} />
+        <div className="mt-4 grid grid-cols-2 rounded-xl bg-muted p-1 text-[10px] font-bold">
+          <div className="rounded-[10px] bg-foreground py-2 text-center text-background">Venta directa</div>
+          <div className="py-2 text-center text-muted-foreground">Consumo con plan</div>
+        </div>
+        <div className="mt-3 flex gap-2"><span className="rounded-full bg-primary px-3 py-1.5 text-[9px] font-bold text-primary-foreground">Almuerzos</span><span className="rounded-full bg-muted px-3 py-1.5 text-[9px] font-bold">Extras</span><span className="rounded-full bg-muted px-3 py-1.5 text-[9px] font-bold">Bebidas</span></div>
+        <div className="mt-3 grid grid-cols-2 gap-2.5">
+          <PosItem image={lunchImage} name="Almuerzo del día" price="$3,00" qty={2} />
+          <PosItem image={veggieImage} name="Almuerzo veggie" price="$3,25" qty={1} />
+          <PosItem image={soupImage} name="Solo sopa" price="$1,25" />
+          <PosItem image={lunchImage} name="Solo segundo" price="$2,50" />
+        </div>
+        <p className="mb-2 mt-4 text-[9px] font-black text-muted-foreground">EXTRAS RÁPIDOS</p>
+        <div className="grid grid-cols-2 gap-2.5">
+          {[["Jugo de naranjilla", "$0,75"], ["Postre del día", "$1,00"]].map(([name, price]) => (
+            <div key={name} className="flex items-center justify-between rounded-xl bg-muted px-3 py-2.5"><div><p className="text-[10px] font-extrabold">{name}</p><p className="text-[9px] font-black text-primary">{price}</p></div><Plus size={14} className="text-primary" /></div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-auto rounded-t-[26px] bg-card-dark px-5 pb-6 pt-4 text-card-dark-foreground">
+        <div className="flex items-center justify-between"><p className="text-[9px] font-black text-lavender">TICKET #0148</p><p className="text-[9px] text-card-dark-muted">Mesa 4</p></div>
+        <div className="mt-2 space-y-1.5 text-[10px]">
+          {[["2×", "Almuerzo del día", "$6,00"], ["1×", "Almuerzo veggie", "$3,25"]].map(([qty, name, total]) => (
+            <div key={name} className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto] items-center gap-2"><span className="font-black text-lavender">{qty}</span><span className="truncate">{name}</span><span className="font-bold">{total}</span><Minus size={12} className="text-card-dark-muted" /></div>
+          ))}
+        </div>
+        <div className="mt-2.5 flex items-end justify-between border-t border-background/15 pt-2.5"><span className="text-[10px] text-card-dark-muted">Total · 3 almuerzos</span><span className="text-xl font-black">$9,25</span></div>
+        <div className="mt-3"><PaymentMethods selected="Efectivo" dark /></div>
+        <PrimaryButton><Banknote size={16} /> Cobrar $9,25</PrimaryButton>
+      </div>
+    </div>
+  </Phone>
+);
+
+const Stepper = ({ label, value }: { label: string; value: string }) => (
+  <div className="rounded-xl bg-muted p-2.5"><p className="text-[8px] text-muted-foreground">{label}</p><div className="mt-1.5 flex items-center justify-between"><span className="grid h-6 w-6 place-items-center rounded-md bg-background"><Minus size={12} /></span><span className="text-sm font-black">{value}</span><span className="grid h-6 w-6 place-items-center rounded-md bg-primary text-primary-foreground"><Plus size={12} /></span></div></div>
+);
+
+const NewPlanScreen = () => (
+  <Phone title="Dueño · Configurar plan">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="min-h-0 flex-1 overflow-hidden px-5">
+        <ScreenHeader eyebrow="LA CUCHARA DE SAN BLAS" title="Nuevo plan" action={<span className="text-[11px] font-extrabold text-primary">Borrador</span>} />
+        <div className="relative mt-4 overflow-hidden rounded-[20px] bg-card-dark p-4 text-card-dark-foreground shadow-card">
+          <div className="absolute -right-6 -top-8 h-24 w-24 rounded-full bg-primary/40" />
+          <p className="relative text-[8px] font-black text-lavender">VISTA PREVIA PARA COMENSALES</p>
+          <div className="relative mt-2 flex items-end justify-between"><div><p className="text-sm font-black">Plan mensual ejecutivo</p><p className="mt-0.5 text-[9px] text-card-dark-muted">20 almuerzos · vigencia 35 días</p></div><div className="text-right"><p className="text-xl font-black">$52,00</p><p className="text-[8px] text-lavender">$2,60 c/u</p></div></div>
+        </div>
+        <FieldLabel>NOMBRE DEL PLAN</FieldLabel>
+        <div className="flex h-10 items-center rounded-xl bg-muted px-3.5 text-[11px] font-semibold">Plan mensual ejecutivo<Pencil size={13} className="ml-auto text-muted-foreground" /></div>
+        <FieldLabel>TIPO DE PLAN</FieldLabel>
+        <div className="grid grid-cols-4 gap-1 rounded-xl bg-muted p-1 text-[9px] font-bold">
+          {["Semanal", "Quincenal", "Mensual", "Libre"].map((t) => <div key={t} className={`rounded-[9px] py-2 text-center ${t === "Mensual" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}>{t}</div>)}
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <Stepper label="Almuerzos" value="20" />
+          <Stepper label="Vigencia (días)" value="35" />
+          <div className="rounded-xl bg-muted p-2.5"><p className="text-[8px] text-muted-foreground">Precio del plan</p><p className="mt-1.5 text-sm font-black">$52,00</p></div>
+          <div className="rounded-xl bg-muted p-2.5"><p className="text-[8px] text-muted-foreground">Cupos disponibles</p><p className="mt-1.5 text-sm font-black">40 clientes</p></div>
+        </div>
+        <FieldLabel>DÍAS DE CONSUMO</FieldLabel>
+        <div className="flex justify-between">{["L", "M", "M", "J", "V", "S", "D"].map((d, i) => <span key={`${d}-${i}`} className={`grid h-8 w-8 place-items-center rounded-lg text-[9px] font-black ${i < 5 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>{d}</span>)}</div>
+        <FieldLabel>EL ALMUERZO INCLUYE</FieldLabel>
+        <div className="flex flex-wrap gap-2">
+          {[["Sopa", true], ["Segundo", true], ["Jugo", true], ["Postre", false]].map(([item, on]) => <span key={String(item)} className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-[9px] font-bold ${on ? "bg-accent text-primary" : "border border-border text-muted-foreground"}`}>{on ? <Check size={11} strokeWidth={3} /> : <Plus size={11} />}{item}</span>)}
+        </div>
+        <div className="mt-3 flex items-center justify-between border-b border-border py-2"><div><p className="text-[10px] font-extrabold">Visible en el marketplace</p><p className="text-[8px] text-muted-foreground">Los comensales pueden comprarlo en la app</p></div><Toggle /></div>
+        <div className="flex items-center justify-between py-2"><div><p className="text-[10px] font-extrabold">Renovación automática</p><p className="text-[8px] text-muted-foreground">Avisar al cliente 3 días antes de vencer</p></div><Toggle on={false} /></div>
+      </div>
+      <div className="shrink-0 px-5 pb-7"><PrimaryButton><Check size={16} /> Guardar y publicar plan</PrimaryButton></div>
+    </div>
+  </Phone>
+);
+
 function ScreenGroup({ eyebrow, title, count, children }: { eyebrow: string; title: string; count: number; children: React.ReactNode }) {
   return (
     <section className="min-w-max">
@@ -364,6 +603,7 @@ function BocadooShowcase() {
         <ScreenGroup eyebrow="Acceso" title="Pantalla compartida" count={1}><LoginScreen /></ScreenGroup>
         <ScreenGroup eyebrow="Experiencia 01" title="Comensal" count={3}><DinerHome /><Marketplace /><DinerSettings /></ScreenGroup>
         <ScreenGroup eyebrow="Experiencia 02" title="Dueño de restaurante" count={4}><OwnerHome /><OwnerPlans /><OwnerMenu /><OwnerSettings /></ScreenGroup>
+        <ScreenGroup eyebrow="Experiencia 02 · Flujos" title="Acciones del dueño" count={5}><ChargeModal /><ScanModal /><AddClientModal /><PosScreen /><NewPlanScreen /></ScreenGroup>
       </div>
     </main>
   );
