@@ -5,6 +5,10 @@ services:
     runtime: static
     buildCommand: npm install && npm run build:static
     staticPublishPath: dist
+    envVars:
+      # Vite 8 necesita Node ^20.19 o >=22.12.
+      - key: NODE_VERSION
+        value: 22.12.0
     routes:
       # Todas las rutas del cliente (/app, /app/dueno/...) se resuelven en el index.html del SPA.
       - type: rewrite
