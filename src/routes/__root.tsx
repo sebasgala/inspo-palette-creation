@@ -79,11 +79,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Bocadoo" },
-      { name: "description", content: "Planes de almuerzo, sin cartulinas." },
+      { title: "Bocadoo · Tus planes de almuerzo, con QR" },
+      {
+        name: "description",
+        content:
+          "Bocadoo digitaliza los planes de almuerzo prepagados de los restaurantes en Quito. Valida cada almuerzo con un QR en segundos.",
+      },
       { name: "author", content: "Bocadoo" },
       { property: "og:title", content: "Bocadoo" },
-      { property: "og:description", content: "Planes de almuerzo, sin cartulinas." },
+      {
+        property: "og:description",
+        content:
+          "Bocadoo digitaliza los planes de almuerzo prepagados de los restaurantes en Quito. Valida cada almuerzo con un QR en segundos.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -117,7 +125,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>
