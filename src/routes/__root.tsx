@@ -123,10 +123,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+/**
+ * Marca <html class="embedded"> cuando el prototipo corre dentro de un iframe (la landing)
+ * o con ?embed=1. Va inline en el <head> para que el marco no alcance a pintarse.
+ */
+const EMBED_SCRIPT =
+  "try{if(window.self!==window.top||/[?&]embed=1(&|$)/.test(location.search))document.documentElement.classList.add('embedded')}catch(e){document.documentElement.classList.add('embedded')}";
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: EMBED_SCRIPT }} />
         <HeadContent />
       </head>
       <body>

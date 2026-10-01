@@ -3,6 +3,8 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+/* Prototipo dentro del iframe de la landing (ver EMBED_SCRIPT en __root.tsx). */
+@custom-variant embedded (&:where(.embedded *));
 
 /*
  * Design system definition.

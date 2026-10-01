@@ -55,7 +55,7 @@ export const Logo = ({ compact = false }: { compact?: boolean }) => (
 
 const StatusBar = ({ app = false }: { app?: boolean }) => (
   <div
-    className={`flex h-11 shrink-0 items-center justify-between px-6 pt-1 text-[12px] font-bold text-foreground ${app ? "max-[500px]:hidden" : ""}`}
+    className={`flex h-11 shrink-0 items-center justify-between px-6 pt-1 text-[12px] font-bold text-foreground ${app ? "max-[500px]:hidden embedded:flex!" : ""}`}
   >
     <span>9:41</span>
     <div className="flex items-center gap-1.5">
@@ -90,21 +90,21 @@ export const DeviceFrame = ({
     <div
       className={
         app
-          ? "relative h-[min(844px,calc(100dvh_-_2rem))] w-[390px] overflow-hidden rounded-[47px] border-[7px] border-phone bg-background shadow-phone max-[500px]:h-dvh max-[500px]:w-full max-[500px]:rounded-none max-[500px]:border-0 max-[500px]:shadow-none"
+          ? "relative h-[min(844px,calc(100dvh_-_2rem))] w-[390px] overflow-hidden rounded-[47px] border-[7px] border-phone bg-background shadow-phone max-[500px]:h-dvh max-[500px]:w-full max-[500px]:rounded-none max-[500px]:border-0 max-[500px]:shadow-none embedded:h-dvh embedded:w-full embedded:rounded-none embedded:border-0 embedded:shadow-none"
           : "phone-shell relative h-[844px] overflow-hidden rounded-[47px] border-[7px] border-phone bg-background shadow-phone"
       }
     >
       <div
-        className={`absolute left-1/2 top-2 z-30 h-[25px] w-[92px] -translate-x-1/2 rounded-full bg-phone ${app ? "max-[500px]:hidden" : ""}`}
+        className={`absolute left-1/2 top-2 z-30 h-[25px] w-[92px] -translate-x-1/2 rounded-full bg-phone ${app ? "max-[500px]:hidden embedded:hidden" : ""}`}
       />
       <div
-        className={`flex h-full flex-col overflow-hidden rounded-[39px] ${app ? "max-[500px]:rounded-none" : ""}`}
+        className={`flex h-full flex-col overflow-hidden rounded-[39px] ${app ? "max-[500px]:rounded-none embedded:rounded-none" : ""}`}
       >
         <StatusBar app={app} />
         {children}
       </div>
       <div
-        className={`pointer-events-none absolute bottom-2 left-1/2 z-30 h-1 w-28 -translate-x-1/2 rounded-full bg-foreground/80 ${app ? "max-[500px]:hidden" : ""}`}
+        className={`pointer-events-none absolute bottom-2 left-1/2 z-30 h-1 w-28 -translate-x-1/2 rounded-full bg-foreground/80 ${app ? "max-[500px]:hidden embedded:hidden" : ""}`}
       />
     </div>
   );
@@ -123,8 +123,11 @@ export const DeviceFrame = ({
 
 /** Página del prototipo navegable: un solo celular centrado. */
 export const AppShell = ({ children }: { children: ReactNode }) => (
-  <main className="grid min-h-dvh place-items-center bg-showcase p-4 font-sans max-[500px]:p-0">
-    <Link to="/app/galeria" className="fixed left-8 top-8 hidden items-center gap-4 xl:flex">
+  <main className="grid min-h-dvh place-items-center bg-showcase p-4 font-sans max-[500px]:p-0 embedded:p-0">
+    <Link
+      to="/app/galeria"
+      className="fixed left-8 top-8 hidden items-center gap-4 xl:flex embedded:hidden!"
+    >
       <Logo compact />
       <span className="rounded-full bg-showcase-pill px-3 py-1.5 text-xs font-bold text-showcase-muted">
         Ver todas las pantallas
@@ -140,7 +143,7 @@ export const AppShell = ({ children }: { children: ReactNode }) => (
  */
 export const Overlay = ({ children, onClose }: { children: ReactNode; onClose?: () => void }) => (
   <div
-    className="absolute inset-0 z-20 flex flex-col overflow-hidden rounded-[39px] bg-foreground/35 p-0 backdrop-blur-[6px] animate-in fade-in duration-200 max-[500px]:rounded-none"
+    className="absolute inset-0 z-20 flex flex-col overflow-hidden rounded-[39px] bg-foreground/35 p-0 backdrop-blur-[6px] animate-in fade-in duration-200 max-[500px]:rounded-none embedded:rounded-none"
     onClick={onClose}
   >
     <div className="contents" onClick={(e) => e.stopPropagation()}>
