@@ -10,6 +10,7 @@ export function LandingPage() {
   const [jsReady, setJsReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [view, setView] = useState<View>("dueno");
+  const [frameKey, setFrameKey] = useState(0);
   const [sent, setSent] = useState(false);
 
   // Aparecer suave al hacer scroll
@@ -40,8 +41,11 @@ export function LandingPage() {
     if ((ev.target as HTMLElement).closest("a")) setMenuOpen(false);
   };
 
-  // Pestañas del prototipo (por ahora solo visuales)
-  const selectView = (next: View) => setView(next);
+  // Pestañas del prototipo: cambian de rol y reinician el iframe
+  const selectView = (next: View) => {
+    setView(next);
+    setFrameKey((k) => k + 1);
+  };
 
   // Formulario (sin envío real todavía)
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
@@ -1031,9 +1035,10 @@ export function LandingPage() {
               <div className="device reveal d1">
                 <div className="device-screen">
                   <div className="island"></div>
-                  {/* Cambiar src por la URL del prototipo */}
+                  {/* Cada cambio de pestaña monta un iframe nuevo en la pantalla principal del rol */}
                   <iframe
-                    src="/app"
+                    key={frameKey}
+                    src={`/app/${view}?embed=1`}
                     title="Prototipo Bocadoo"
                     loading="lazy"
                     allow="camera"
