@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MarketplaceScreen } from "@/components/bocadoo/diner";
 import { AppShell } from "@/components/bocadoo/ui";
 
-export const Route = createFileRoute("/comensal/restaurantes")({
+export const Route = createFileRoute("/app/comensal/restaurantes")({
   head: () => ({ meta: [{ title: "Bocadoo — Restaurantes" }] }),
   component: () => (
     <AppShell>

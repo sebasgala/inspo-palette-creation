@@ -4,7 +4,7 @@ import { z } from "zod";
 import { NewPlanScreen } from "@/components/bocadoo/owner-actions";
 import { AppShell } from "@/components/bocadoo/ui";
 
-export const Route = createFileRoute("/dueno/planes/nuevo")({
+export const Route = createFileRoute("/app/dueno/planes/nuevo")({
   validateSearch: z.object({
     tipo: z.enum(["Semanal", "Quincenal", "Mensual", "Libre"]).optional(),
   }),

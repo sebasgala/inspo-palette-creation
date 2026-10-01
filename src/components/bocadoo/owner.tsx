@@ -284,9 +284,13 @@ export function OwnerHomeScreen({
           <SectionTitle>Accesos rápidos</SectionTitle>
         </div>
         <div className="mt-3 grid grid-cols-3 gap-3">
-          <QuickAction icon={CreditCard} label="Cobrar" to="/dueno/cobrar" />
-          <QuickAction icon={ScanLine} label="Escanear QR / Descontar" to="/dueno/descontar" />
-          <QuickAction icon={Utensils} label="Registrar consumo" to="/dueno/registrar-consumo" />
+          <QuickAction icon={CreditCard} label="Cobrar" to="/app/dueno/cobrar" />
+          <QuickAction icon={ScanLine} label="Escanear QR / Descontar" to="/app/dueno/descontar" />
+          <QuickAction
+            icon={Utensils}
+            label="Registrar consumo"
+            to="/app/dueno/registrar-consumo"
+          />
         </div>
         {contacts.length > 0 && (
           <>
@@ -305,7 +309,7 @@ export function OwnerHomeScreen({
               {contacts.map((c) => (
                 <Link
                   key={c.id}
-                  to="/dueno/cobrar"
+                  to="/app/dueno/cobrar"
                   search={{ cliente: c.id }}
                   className="grid grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 py-2.5"
                 >
@@ -410,7 +414,7 @@ export function OwnerPlansScreen() {
             <h2 className="mt-1 text-[23px] font-black">Mis planes</h2>
           </div>
           <Link
-            to="/dueno/planes/nuevo"
+            to="/app/dueno/planes/nuevo"
             aria-label="Agregar plan"
             className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground"
           >
@@ -454,7 +458,7 @@ export function OwnerPlansScreen() {
             ))}
           </div>
           <Link
-            to="/dueno/planes/nuevo"
+            to="/app/dueno/planes/nuevo"
             search={{ tipo: "Libre" }}
             className="mt-4 block rounded-xl bg-foreground py-3 text-center text-[10px] font-bold text-background"
           >
@@ -601,7 +605,7 @@ export function OwnerSettingsScreen() {
         <SettingsRow icon={LockKeyhole} label="Cambiar contraseña" />
         <SettingsRow icon={Bell} label="Notificaciones" />
         <SettingsRow icon={CircleHelp} label="Ayuda y soporte" />
-        <SettingsRow icon={LogOut} label="Cerrar sesión" danger to="/" />
+        <SettingsRow icon={LogOut} label="Cerrar sesión" danger to="/app" />
       </div>
       <NavBar active="Ajustes" owner />
     </div>

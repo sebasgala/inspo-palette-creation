@@ -4,7 +4,7 @@ import { z } from "zod";
 import { OwnerHomeScreen } from "@/components/bocadoo/owner";
 import { AppShell } from "@/components/bocadoo/ui";
 
-export const Route = createFileRoute("/dueno/")({
+export const Route = createFileRoute("/app/dueno/")({
   validateSearch: z.object({ agregarCliente: z.boolean().optional() }),
   head: () => ({ meta: [{ title: "Bocadoo — Panel del dueño" }] }),
   component: RouteComponent,

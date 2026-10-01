@@ -124,7 +124,7 @@ export const DeviceFrame = ({
 /** Página del prototipo navegable: un solo celular centrado. */
 export const AppShell = ({ children }: { children: ReactNode }) => (
   <main className="grid min-h-dvh place-items-center bg-showcase p-4 font-sans max-[500px]:p-0">
-    <Link to="/galeria" className="fixed left-8 top-8 hidden items-center gap-4 xl:flex">
+    <Link to="/app/galeria" className="fixed left-8 top-8 hidden items-center gap-4 xl:flex">
       <Logo compact />
       <span className="rounded-full bg-showcase-pill px-3 py-1.5 text-xs font-bold text-showcase-muted">
         Ver todas las pantallas
@@ -158,15 +158,15 @@ export function useGoBack(fallback: AppPath) {
 
 const NAV_ITEMS: Record<"diner" | "owner", Array<[string, IconType, AppPath]>> = {
   diner: [
-    ["Home", Home, "/comensal"],
-    ["Restaurantes", Store, "/comensal/restaurantes"],
-    ["Ajustes", Settings, "/comensal/ajustes"],
+    ["Home", Home, "/app/comensal"],
+    ["Restaurantes", Store, "/app/comensal/restaurantes"],
+    ["Ajustes", Settings, "/app/comensal/ajustes"],
   ],
   owner: [
-    ["Home", Home, "/dueno"],
-    ["Planes", WalletCards, "/dueno/planes"],
-    ["Menú", MenuIcon, "/dueno/menu"],
-    ["Ajustes", Settings, "/dueno/ajustes"],
+    ["Home", Home, "/app/dueno"],
+    ["Planes", WalletCards, "/app/dueno/planes"],
+    ["Menú", MenuIcon, "/app/dueno/menu"],
+    ["Ajustes", Settings, "/app/dueno/ajustes"],
   ],
 };
 

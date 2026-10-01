@@ -148,14 +148,14 @@ export function ChargeScreen({ initialClientId }: { initialClientId?: string | u
     toast.success("Cobro confirmado", {
       description: `${selected.name} · ${plan.name} · ${money(plan.price)}`,
     });
-    navigate({ to: "/dueno" });
+    navigate({ to: "/app/dueno" });
   };
 
   if (!selected) {
     return (
       <div className="flex min-h-0 flex-1 flex-col">
         <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-5 pb-4">
-          <ScreenHeader eyebrow="COBRAR PLAN" title="Buscar cliente" back="/dueno" />
+          <ScreenHeader eyebrow="COBRAR PLAN" title="Buscar cliente" back="/app/dueno" />
           <SearchBar value={query} onChange={setQuery} placeholder="Busca por username o correo" />
           <div className="mt-4 space-y-2">
             {results.length === 0 && (
@@ -175,7 +175,7 @@ export function ChargeScreen({ initialClientId }: { initialClientId?: string | u
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-5 pb-4">
-        <ScreenHeader eyebrow="COBRAR PLAN" title="Nuevo cobro" back="/dueno/cobrar" />
+        <ScreenHeader eyebrow="COBRAR PLAN" title="Nuevo cobro" back="/app/dueno/cobrar" />
         <FieldLabel>CLIENTE</FieldLabel>
         <button
           type="button"
@@ -282,7 +282,11 @@ export function ScanDiscountScreen() {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-5 pb-4">
-        <ScreenHeader eyebrow="ESCANEAR QR / DESCONTAR" title="Descontar almuerzo" back="/dueno" />
+        <ScreenHeader
+          eyebrow="ESCANEAR QR / DESCONTAR"
+          title="Descontar almuerzo"
+          back="/app/dueno"
+        />
         <div className="mt-4 grid grid-cols-2 rounded-xl bg-muted p-1 text-[10px] font-bold">
           <button
             type="button"
@@ -448,7 +452,7 @@ export function PosScreen() {
       description: money(chargedTotal),
     });
     setCart({});
-    navigate({ to: "/dueno" });
+    navigate({ to: "/app/dueno" });
   };
 
   return (
@@ -457,7 +461,7 @@ export function PosScreen() {
         <ScreenHeader
           eyebrow="CAJA ABIERTA"
           title="Registrar consumo"
-          back="/dueno"
+          back="/app/dueno"
           action={
             <div className="grid h-10 w-10 place-items-center rounded-full bg-accent text-primary">
               <Receipt size={18} />
@@ -580,7 +584,7 @@ export function NewPlanScreen({ initialType = "Mensual" }: { initialType?: PlanT
       "id" | "clients" | "active"
     >);
     toast.success("Plan publicado", { description: `${name.trim()} ya está disponible.` });
-    navigate({ to: "/dueno/planes" });
+    navigate({ to: "/app/dueno/planes" });
   };
 
   return (
@@ -589,7 +593,7 @@ export function NewPlanScreen({ initialType = "Mensual" }: { initialType?: PlanT
         <ScreenHeader
           eyebrow="LA CUCHARA DE SAN BLAS"
           title="Nuevo plan"
-          back="/dueno/planes"
+          back="/app/dueno/planes"
           action={<span className="text-[11px] font-extrabold text-primary">Borrador</span>}
         />
         <div className="relative mt-4 overflow-hidden rounded-[20px] bg-card-dark p-4 text-card-dark-foreground shadow-card">

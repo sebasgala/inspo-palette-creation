@@ -4,7 +4,7 @@ import { z } from "zod";
 import { ChargeScreen } from "@/components/bocadoo/owner-actions";
 import { AppShell } from "@/components/bocadoo/ui";
 
-export const Route = createFileRoute("/dueno/cobrar")({
+export const Route = createFileRoute("/app/dueno/cobrar")({
   validateSearch: z.object({ cliente: z.string().optional() }),
   head: () => ({ meta: [{ title: "Bocadoo — Cobrar plan" }] }),
   component: RouteComponent,

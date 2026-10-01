@@ -4,7 +4,7 @@ import { z } from "zod";
 import { DinerHomeScreen } from "@/components/bocadoo/diner";
 import { AppShell } from "@/components/bocadoo/ui";
 
-export const Route = createFileRoute("/comensal/")({
+export const Route = createFileRoute("/app/comensal/")({
   validateSearch: z.object({ qr: z.boolean().optional() }),
   head: () => ({ meta: [{ title: "Bocadoo — Mis planes" }] }),
   component: RouteComponent,

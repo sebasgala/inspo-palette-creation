@@ -46,7 +46,7 @@ import lunchImage from "@/assets/bocadoo-lunch.jpg";
 import soupImage from "@/assets/bocadoo-soup.jpg";
 import veggieImage from "@/assets/bocadoo-veggie.jpg";
 
-export const Route = createFileRoute("/galeria")({
+export const Route = createFileRoute("/app/galeria")({
   head: () => ({
     meta: [
       { title: "Bocadoo — Maquetas de la app móvil" },

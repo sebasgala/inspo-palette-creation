@@ -43,7 +43,7 @@ import {
 export function LoginScreen() {
   const navigate = useNavigate();
   const [role, setRole] = useState<"diner" | "owner">("diner");
-  const enter = () => navigate({ to: role === "diner" ? "/comensal" : "/dueno" });
+  const enter = () => navigate({ to: role === "diner" ? "/app/comensal" : "/app/dueno" });
   const tab = (value: "diner" | "owner", label: string) => (
     <button
       type="button"
@@ -583,7 +583,7 @@ export function DinerSettingsScreen() {
         <SettingsRow icon={Bell} label="Notificaciones" />
         <SettingsRow icon={CircleHelp} label="Ayuda y soporte" />
         <SettingsRow icon={LockKeyhole} label="Términos y privacidad" />
-        <SettingsRow icon={LogOut} label="Cerrar sesión" danger to="/" />
+        <SettingsRow icon={LogOut} label="Cerrar sesión" danger to="/app" />
       </div>
       <NavBar active="Ajustes" />
     </div>
