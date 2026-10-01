@@ -10,33 +10,193 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as ComensalIndexRouteImport } from './routes/comensal/index'
+import { Route as ComensalAjustesRouteImport } from './routes/comensal/ajustes'
+import { Route as ComensalRestaurantesRouteImport } from './routes/comensal/restaurantes'
+import { Route as DuenoIndexRouteImport } from './routes/dueno/index'
+import { Route as DuenoAjustesRouteImport } from './routes/dueno/ajustes'
+import { Route as DuenoCobrarRouteImport } from './routes/dueno/cobrar'
+import { Route as DuenoDescontarRouteImport } from './routes/dueno/descontar'
+import { Route as DuenoMenuRouteImport } from './routes/dueno/menu'
+import { Route as DuenoRegistrarConsumoRouteImport } from './routes/dueno/registrar-consumo'
+import { Route as DuenoPlanesIndexRouteImport } from './routes/dueno/planes/index'
+import { Route as DuenoPlanesNuevoRouteImport } from './routes/dueno/planes/nuevo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComensalIndexRoute = ComensalIndexRouteImport.update({
+  id: '/comensal/',
+  path: '/comensal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComensalAjustesRoute = ComensalAjustesRouteImport.update({
+  id: '/comensal/ajustes',
+  path: '/comensal/ajustes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComensalRestaurantesRoute = ComensalRestaurantesRouteImport.update({
+  id: '/comensal/restaurantes',
+  path: '/comensal/restaurantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoIndexRoute = DuenoIndexRouteImport.update({
+  id: '/dueno/',
+  path: '/dueno/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoAjustesRoute = DuenoAjustesRouteImport.update({
+  id: '/dueno/ajustes',
+  path: '/dueno/ajustes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoCobrarRoute = DuenoCobrarRouteImport.update({
+  id: '/dueno/cobrar',
+  path: '/dueno/cobrar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoDescontarRoute = DuenoDescontarRouteImport.update({
+  id: '/dueno/descontar',
+  path: '/dueno/descontar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoMenuRoute = DuenoMenuRouteImport.update({
+  id: '/dueno/menu',
+  path: '/dueno/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoRegistrarConsumoRoute = DuenoRegistrarConsumoRouteImport.update({
+  id: '/dueno/registrar-consumo',
+  path: '/dueno/registrar-consumo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoPlanesIndexRoute = DuenoPlanesIndexRouteImport.update({
+  id: '/dueno/planes/',
+  path: '/dueno/planes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuenoPlanesNuevoRoute = DuenoPlanesNuevoRouteImport.update({
+  id: '/dueno/planes/nuevo',
+  path: '/dueno/planes/nuevo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/galeria': typeof GaleriaRoute
+  '/comensal/ajustes': typeof ComensalAjustesRoute
+  '/comensal/restaurantes': typeof ComensalRestaurantesRoute
+  '/dueno/ajustes': typeof DuenoAjustesRoute
+  '/dueno/cobrar': typeof DuenoCobrarRoute
+  '/dueno/descontar': typeof DuenoDescontarRoute
+  '/dueno/menu': typeof DuenoMenuRoute
+  '/dueno/registrar-consumo': typeof DuenoRegistrarConsumoRoute
+  '/comensal/': typeof ComensalIndexRoute
+  '/dueno/': typeof DuenoIndexRoute
+  '/dueno/planes/nuevo': typeof DuenoPlanesNuevoRoute
+  '/dueno/planes/': typeof DuenoPlanesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/galeria': typeof GaleriaRoute
+  '/comensal/ajustes': typeof ComensalAjustesRoute
+  '/comensal/restaurantes': typeof ComensalRestaurantesRoute
+  '/dueno/ajustes': typeof DuenoAjustesRoute
+  '/dueno/cobrar': typeof DuenoCobrarRoute
+  '/dueno/descontar': typeof DuenoDescontarRoute
+  '/dueno/menu': typeof DuenoMenuRoute
+  '/dueno/registrar-consumo': typeof DuenoRegistrarConsumoRoute
+  '/comensal': typeof ComensalIndexRoute
+  '/dueno': typeof DuenoIndexRoute
+  '/dueno/planes/nuevo': typeof DuenoPlanesNuevoRoute
+  '/dueno/planes': typeof DuenoPlanesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/galeria': typeof GaleriaRoute
+  '/comensal/ajustes': typeof ComensalAjustesRoute
+  '/comensal/restaurantes': typeof ComensalRestaurantesRoute
+  '/dueno/ajustes': typeof DuenoAjustesRoute
+  '/dueno/cobrar': typeof DuenoCobrarRoute
+  '/dueno/descontar': typeof DuenoDescontarRoute
+  '/dueno/menu': typeof DuenoMenuRoute
+  '/dueno/registrar-consumo': typeof DuenoRegistrarConsumoRoute
+  '/comensal/': typeof ComensalIndexRoute
+  '/dueno/': typeof DuenoIndexRoute
+  '/dueno/planes/nuevo': typeof DuenoPlanesNuevoRoute
+  '/dueno/planes/': typeof DuenoPlanesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/galeria'
+    | '/comensal/ajustes'
+    | '/comensal/restaurantes'
+    | '/dueno/ajustes'
+    | '/dueno/cobrar'
+    | '/dueno/descontar'
+    | '/dueno/menu'
+    | '/dueno/registrar-consumo'
+    | '/comensal/'
+    | '/dueno/'
+    | '/dueno/planes/nuevo'
+    | '/dueno/planes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/galeria'
+    | '/comensal/ajustes'
+    | '/comensal/restaurantes'
+    | '/dueno/ajustes'
+    | '/dueno/cobrar'
+    | '/dueno/descontar'
+    | '/dueno/menu'
+    | '/dueno/registrar-consumo'
+    | '/comensal'
+    | '/dueno'
+    | '/dueno/planes/nuevo'
+    | '/dueno/planes'
+  id:
+    | '__root__'
+    | '/'
+    | '/galeria'
+    | '/comensal/ajustes'
+    | '/comensal/restaurantes'
+    | '/dueno/ajustes'
+    | '/dueno/cobrar'
+    | '/dueno/descontar'
+    | '/dueno/menu'
+    | '/dueno/registrar-consumo'
+    | '/comensal/'
+    | '/dueno/'
+    | '/dueno/planes/nuevo'
+    | '/dueno/planes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GaleriaRoute: typeof GaleriaRoute
+  ComensalAjustesRoute: typeof ComensalAjustesRoute
+  ComensalRestaurantesRoute: typeof ComensalRestaurantesRoute
+  DuenoAjustesRoute: typeof DuenoAjustesRoute
+  DuenoCobrarRoute: typeof DuenoCobrarRoute
+  DuenoDescontarRoute: typeof DuenoDescontarRoute
+  DuenoMenuRoute: typeof DuenoMenuRoute
+  DuenoRegistrarConsumoRoute: typeof DuenoRegistrarConsumoRoute
+  ComensalIndexRoute: typeof ComensalIndexRoute
+  DuenoIndexRoute: typeof DuenoIndexRoute
+  DuenoPlanesNuevoRoute: typeof DuenoPlanesNuevoRoute
+  DuenoPlanesIndexRoute: typeof DuenoPlanesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +208,107 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comensal/': {
+      id: '/comensal/'
+      path: '/comensal'
+      fullPath: '/comensal/'
+      preLoaderRoute: typeof ComensalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comensal/ajustes': {
+      id: '/comensal/ajustes'
+      path: '/comensal/ajustes'
+      fullPath: '/comensal/ajustes'
+      preLoaderRoute: typeof ComensalAjustesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comensal/restaurantes': {
+      id: '/comensal/restaurantes'
+      path: '/comensal/restaurantes'
+      fullPath: '/comensal/restaurantes'
+      preLoaderRoute: typeof ComensalRestaurantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/': {
+      id: '/dueno/'
+      path: '/dueno'
+      fullPath: '/dueno/'
+      preLoaderRoute: typeof DuenoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/ajustes': {
+      id: '/dueno/ajustes'
+      path: '/dueno/ajustes'
+      fullPath: '/dueno/ajustes'
+      preLoaderRoute: typeof DuenoAjustesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/cobrar': {
+      id: '/dueno/cobrar'
+      path: '/dueno/cobrar'
+      fullPath: '/dueno/cobrar'
+      preLoaderRoute: typeof DuenoCobrarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/descontar': {
+      id: '/dueno/descontar'
+      path: '/dueno/descontar'
+      fullPath: '/dueno/descontar'
+      preLoaderRoute: typeof DuenoDescontarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/menu': {
+      id: '/dueno/menu'
+      path: '/dueno/menu'
+      fullPath: '/dueno/menu'
+      preLoaderRoute: typeof DuenoMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/registrar-consumo': {
+      id: '/dueno/registrar-consumo'
+      path: '/dueno/registrar-consumo'
+      fullPath: '/dueno/registrar-consumo'
+      preLoaderRoute: typeof DuenoRegistrarConsumoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/planes/': {
+      id: '/dueno/planes/'
+      path: '/dueno/planes'
+      fullPath: '/dueno/planes/'
+      preLoaderRoute: typeof DuenoPlanesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dueno/planes/nuevo': {
+      id: '/dueno/planes/nuevo'
+      path: '/dueno/planes/nuevo'
+      fullPath: '/dueno/planes/nuevo'
+      preLoaderRoute: typeof DuenoPlanesNuevoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GaleriaRoute: GaleriaRoute,
+  ComensalAjustesRoute: ComensalAjustesRoute,
+  ComensalRestaurantesRoute: ComensalRestaurantesRoute,
+  DuenoAjustesRoute: DuenoAjustesRoute,
+  DuenoCobrarRoute: DuenoCobrarRoute,
+  DuenoDescontarRoute: DuenoDescontarRoute,
+  DuenoMenuRoute: DuenoMenuRoute,
+  DuenoRegistrarConsumoRoute: DuenoRegistrarConsumoRoute,
+  ComensalIndexRoute: ComensalIndexRoute,
+  DuenoIndexRoute: DuenoIndexRoute,
+  DuenoPlanesNuevoRoute: DuenoPlanesNuevoRoute,
+  DuenoPlanesIndexRoute: DuenoPlanesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
