@@ -1,0 +1,12 @@
+# Bocadoo en Render como Static Site (landing en / y prototipo en /app).
+services:
+  - type: web
+    name: bocadoo
+    runtime: static
+    buildCommand: npm install && npm run build:static
+    staticPublishPath: dist
+    routes:
+      # Todas las rutas del cliente (/app, /app/dueno/...) se resuelven en el index.html del SPA.
+      - type: rewrite
+        source: /*
+        destination: /index.html
