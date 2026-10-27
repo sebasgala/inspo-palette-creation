@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
 
 import "./landing.css";
@@ -1348,6 +1349,9 @@ export function LandingPage() {
                 <circle cx="12" cy="9" r="2.5" />
               </svg>
               Hecho en Quito, Ecuador
+            </span>
+            <span>
+              <Link to="/privacidad">Política de privacidad</Link>
             </span>
             <span>© 2026 Bocadoo</span>
           </div>

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppGaleriaRouteImport } from './routes/app/galeria'
 import { Route as AppComensalIndexRouteImport } from './routes/app/comensal/index'
@@ -28,6 +29,11 @@ import { Route as AppDuenoPlanesNuevoRouteImport } from './routes/app/dueno/plan
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
@@ -104,6 +110,7 @@ const AppDuenoPlanesNuevoRoute = AppDuenoPlanesNuevoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/': typeof AppIndexRoute
   '/app/comensal/ajustes': typeof AppComensalAjustesRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app': typeof AppIndexRoute
   '/app/comensal/ajustes': typeof AppComensalAjustesRoute
@@ -139,6 +147,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/': typeof AppIndexRoute
   '/app/comensal/ajustes': typeof AppComensalAjustesRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/privacidad'
     | '/app/galeria'
     | '/app/'
     | '/app/comensal/ajustes'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/privacidad'
     | '/app/galeria'
     | '/app'
     | '/app/comensal/ajustes'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/privacidad'
     | '/app/galeria'
     | '/app/'
     | '/app/comensal/ajustes'
@@ -210,6 +222,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   AppGaleriaRoute: typeof AppGaleriaRoute
   AppIndexRoute: typeof AppIndexRoute
   AppComensalAjustesRoute: typeof AppComensalAjustesRoute
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/': {
@@ -338,6 +358,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrivacidadRoute: PrivacidadRoute,
   AppGaleriaRoute: AppGaleriaRoute,
   AppIndexRoute: AppIndexRoute,
   AppComensalAjustesRoute: AppComensalAjustesRoute,
