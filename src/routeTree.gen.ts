@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FlujosRouteImport } from './routes/flujos'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppGaleriaRouteImport } from './routes/app/galeria'
 import { Route as AppKitRouteImport } from './routes/app/kit'
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
 const FlujosRoute = FlujosRouteImport.update({
   id: '/flujos',
   path: '/flujos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
@@ -183,6 +189,7 @@ const AppDuenoPlanesNuevoRoute = AppDuenoPlanesNuevoRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/flujos': typeof FlujosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/kit': typeof AppKitRoute
   '/app/': typeof AppIndexRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/flujos': typeof FlujosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/kit': typeof AppKitRoute
   '/app': typeof AppIndexRoute
@@ -244,6 +252,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/flujos': typeof FlujosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/kit': typeof AppKitRoute
   '/app/': typeof AppIndexRoute
@@ -276,6 +285,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/flujos'
+    | '/privacidad'
     | '/app/galeria'
     | '/app/kit'
     | '/app/'
@@ -306,6 +316,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/flujos'
+    | '/privacidad'
     | '/app/galeria'
     | '/app/kit'
     | '/app'
@@ -336,6 +347,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/flujos'
+    | '/privacidad'
     | '/app/galeria'
     | '/app/kit'
     | '/app/'
@@ -367,6 +379,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FlujosRoute: typeof FlujosRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   AppGaleriaRoute: typeof AppGaleriaRoute
   AppKitRoute: typeof AppKitRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -409,6 +422,13 @@ declare module '@tanstack/react-router' {
       path: '/flujos'
       fullPath: '/flujos'
       preLoaderRoute: typeof FlujosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/': {
@@ -599,6 +619,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FlujosRoute: FlujosRoute,
+  PrivacidadRoute: PrivacidadRoute,
   AppGaleriaRoute: AppGaleriaRoute,
   AppKitRoute: AppKitRoute,
   AppIndexRoute: AppIndexRoute,

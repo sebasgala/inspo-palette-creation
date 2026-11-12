@@ -1384,6 +1384,9 @@ export function LandingPage() {
               </svg>
               Hecho en Quito, Ecuador
             </span>
+            <span>
+              <Link to="/privacidad">Política de privacidad</Link>
+            </span>
             <span>© 2026 Bocadoo</span>
           </div>
         </div>
