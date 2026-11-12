@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
+import { QRCodeSVG } from "qrcode.react";
 
 import "./landing.css";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -7,6 +8,8 @@ import { QR_BACKGROUND, QR_FOREGROUND } from "@/lib/qr-colors";
 import { buildLeadWhatsAppUrl, saveLead, type CapturedLead } from "./leads";
 
 type View = "dueno" | "comensal";
+
+const PROTOTYPE_URL = "https://bocadoo.onrender.com/#prototipo";
 
 /** Landing de Bocadoo (diseño de Claude Design). Los estilos viven en landing.css bajo `.landing`. */
 export function LandingPage() {
@@ -1368,6 +1371,23 @@ export function LandingPage() {
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+          <div className="foot-qr">
+            <div className="foot-qr-code">
+              <QRCodeSVG
+                value={PROTOTYPE_URL}
+                size={144}
+                level="M"
+                marginSize={1}
+                fgColor={QR_FOREGROUND}
+                bgColor={QR_BACKGROUND}
+              />
+            </div>
+            <div>
+              <h4>Pruébalo en tu celular</h4>
+              <p>Escanea el código QR para abrir el prototipo de Bocadoo.</p>
+              <a href={PROTOTYPE_URL}>{PROTOTYPE_URL.replace("https://", "")}</a>
             </div>
           </div>
           <div className="foot-bot">

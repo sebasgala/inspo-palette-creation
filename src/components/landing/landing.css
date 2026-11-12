@@ -345,6 +345,11 @@ html:has(.landing){scroll-behavior:smooth}
 .landing .foot-links ul{list-style:none;display:grid;gap:10px}
 .landing .foot-links a{color:color-mix(in srgb,var(--image-foreground) 88%,transparent);font-size:15px;transition:color .2s}
 .landing .foot-links a:hover{color:var(--footer-accent)}
+.landing .foot-qr{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px;margin-top:32px;border-top:1px solid color-mix(in srgb,var(--image-foreground) 15%,transparent)}
+.landing .foot-qr h4{margin:0 0 6px;font-size:16px}
+.landing .foot-qr p{margin:0 0 6px;font-size:14px;color:color-mix(in srgb,var(--image-foreground) 78%,transparent)}
+.landing .foot-qr a{font-size:14px;font-weight:600;color:var(--footer-accent);text-decoration:underline}
+.landing .foot-qr-code{background:var(--qr-bg);padding:12px;border-radius:16px;line-height:0}
 .landing .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:14px;color:color-mix(in srgb,var(--image-foreground) 78%,transparent)}
 .landing .foot-bot span{display:inline-flex;align-items:center;gap:8px}
 .landing .foot-bot svg{width:16px;height:16px;stroke:var(--footer-accent)}
